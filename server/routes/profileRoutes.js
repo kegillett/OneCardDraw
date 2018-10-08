@@ -3,6 +3,19 @@ const Profile = require('../models/profile');
 
 module.exports = function(router) {
 
+  router.route('/random')
+    .get(function(req, res) {
+      Profile.countDocuments().exec(function (err, count){
+        let random = Math.floor(Math.random() * count)
+        Profile.findOne().skip(random).exec(
+          function(err, profile){
+            if (err)
+              res.send(err)
+            res.json(profile)
+          })
+      })
+    })
+
   router.route('/profile')
     .post(function(req, res) {
       const profile = new Profile();
