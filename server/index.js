@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5432;
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( express.static( path.join( __dirname, '../public' ) ) )
+app.use('/profileImgs', express.static(path.join(__dirname, '../profileImgs')))
 // app.use(express.static(path.resolve(__dirname, '../public')))
 app.use( bodyParser.json() );
 
