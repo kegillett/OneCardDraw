@@ -1,4 +1,16 @@
 const Profile = require('../models/profile');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './profileImgs/')
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
 
 
 module.exports = function(router) {
@@ -43,9 +55,10 @@ module.exports = function(router) {
 
   router.route('/profile')
     //create new profile.
-    .post(function(req, res) {
+    .post(upload.single('photoURL'), (req, res) => {
+      console.log(req.file)
       const profile = new Profile();
-      profile.photoURL = req.body.photoURL;
+      profile.photoURL = req.file.path;
       profile.firstName = req.body.firstName;
       profile.lastName = req.body.lastName;
       profile.age = req.body.age;
