@@ -7,6 +7,7 @@ const ProfileSchema = new Schema({
   lastName: String,
   age: String,
   sex: String,
+  location: String,
   bio: String
 });
 
