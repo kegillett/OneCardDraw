@@ -14,60 +14,22 @@ module.exports = function(router) {
           bio: undefined
         };
         Profile.countDocuments().exec(function (err, count){
-          let random = Math.floor(Math.random() * count)
-          Profile.findOne().skip(random).exec(
-            function(err, profile){
-              if (err)
-                res.send(err)
-              tempProfile.photoURL = profile.photoURL
-            })
+          const keyLength = Object.keys(tempProfile).length
+          let counter = 0
+          new Promise((resolve, reject) => {
+            for(let key in tempProfile) {
+              const random = Math.floor(Math.random() * count)
+              Profile.findOne().skip(random).exec(
+                function(err, profile){
+                  if (err) res.send(err)
+                  tempProfile[key] = profile[key]
+                  counter++
+                  if (counter === keyLength) resolve()
+                })
+            }
+          })
+          .then(() => res.json(tempProfile));
         })
-        Profile.countDocuments().exec(function (err, count){
-          let random = Math.floor(Math.random() * count)
-          Profile.findOne().skip(random).exec(
-            function(err, profile){
-              if (err)
-                res.send(err)
-              tempProfile.firstName = profile.firstName
-            })
-        })
-        Profile.countDocuments().exec(function (err, count){
-          let random = Math.floor(Math.random() * count)
-          Profile.findOne().skip(random).exec(
-            function(err, profile){
-              if (err)
-                res.send(err)
-              tempProfile.lastName = profile.lastName
-            })
-        })
-        Profile.countDocuments().exec(function (err, count){
-          let random = Math.floor(Math.random() * count)
-          Profile.findOne().skip(random).exec(
-            function(err, profile){
-              if (err)
-                res.send(err)
-              tempProfile.age = profile.age
-            })
-        })
-        Profile.countDocuments().exec(function (err, count){
-          let random = Math.floor(Math.random() * count)
-          Profile.findOne().skip(random).exec(
-            function(err, profile){
-              if (err)
-                res.send(err)
-              tempProfile.sex = profile.sex
-            })
-        })
-        Profile.countDocuments().exec(function (err, count){
-          let random = Math.floor(Math.random() * count)
-          Profile.findOne().skip(random).exec(
-            function(err, profile){
-              if (err)
-                res.send(err)
-              tempProfile.bio = profile.bio
-            })
-        })
-        setTimeout(function(){ res.json(tempProfile); }, 40);
       })
 
   router.route('/profile')
