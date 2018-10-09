@@ -12,6 +12,7 @@ module.exports = function(router) {
           lastName: undefined,
           age: undefined,
           sex: undefined,
+          location: undefined,
           bio: undefined
         };
         //Counts number of objects in database then perfoms a function.
@@ -49,6 +50,7 @@ module.exports = function(router) {
       profile.lastName = req.body.lastName;
       profile.age = req.body.age;
       profile.sex = req.body.sex;
+      profile.location = req.body.location;
       profile.bio = req.body.bio;
       profile.save(function(err) {
         if (err)
