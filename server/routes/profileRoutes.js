@@ -12,7 +12,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-
 module.exports = function(router) {
 
   router.route('/random')
@@ -29,12 +28,11 @@ module.exports = function(router) {
         };
         //Counts number of objects in database then perfoms a function.
         Profile.countDocuments().exec(function (err, count){
-          //Sets keyLength to number of keys in tempProfile. Counter set to 0.
           const keyLength = Object.keys(tempProfile).length
           let counter = 0
           //Allows for loop to work at its own pace without going further into the function until after the promise resolves.
           new Promise((resolve, reject) => {
-            //loops through tempProfile
+            //loops through tempProfile object (cool es6 stuff)
             for(let key in tempProfile) {
               //at each key in tempProfile we get a random profile from database and assign the appropriate key value to our tempProfile.
               const random = Math.floor(Math.random() * count)
@@ -48,7 +46,6 @@ module.exports = function(router) {
                 })
             }
           })
-          //after promise is resolved the tempProfile is returned as a json object.
           .then(() => res.json(tempProfile));
         })
       })

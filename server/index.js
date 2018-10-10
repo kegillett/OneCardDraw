@@ -9,11 +9,7 @@ const PORT = process.env.PORT || 5432;
 app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( express.static( path.join( __dirname, '../public' ) ) )
 app.use('/profileImgs', express.static(path.join(__dirname, '../profileImgs')))
-// app.use(express.static(path.resolve(__dirname, '../public')))
 app.use( bodyParser.json() );
-
-
-// mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost:27017/oneCardAPI',{ useNewUrlParser: true })
 
 mongoose.connect( 'mongodb://localhost:27017/oneCardAPI', { useNewUrlParser: true } );
 
@@ -30,8 +26,6 @@ router.get('/', function (req, res) {
 
 const profileRoutes = require('./routes/profileRoutes.js')
 profileRoutes(router)
-
-
 
 //test route
 app.use('/api', router);
