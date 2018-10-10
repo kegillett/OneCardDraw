@@ -65,11 +65,12 @@ module.exports = function(router) {
       profile.sex = req.body.sex;
       profile.location = req.body.location;
       profile.bio = req.body.bio;
-      profile.save(function(err) {
+      profile.save(function(err, profile) {
         if (err)
           res.send(err)
         res.json({
-          message: "Ur prof wuz made."
+          message: "Ur prof wuz made.",
+          profile
         })
       })
     })
