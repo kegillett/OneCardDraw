@@ -1,22 +1,24 @@
 {
-  "name": "onecarddraw",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": " ./node_modules/nodemon/bin/nodemon.js ./server/index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mongoose": "^5.3.2",
-    "multer": "^1.4.0",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
-  }
+	"name": "onecarddraw",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": " ./node_modules/nodemon/bin/nodemon.js ./server/index.js",
+		"start": "concurrently --kill-others \"cd client/ && npm run start\" \"npm run dev\""
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.3",
+		"mongoose": "^5.3.2",
+		"multer": "^1.4.0",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"concurrently": "^4.0.1",
+		"nodemon": "^1.18.4"
+	}
 }

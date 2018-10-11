@@ -1,0 +1,20 @@
+body {
+  background-image: url('./images/background.png');
+  font-family: 'Lobster', cursive;
+}
+
+.toolbar {
+  color: #1A237E;
+  background-image: url('./images/NavBar.png');
+}
+
+.cards {
+  margin: 20px;
+  margin-top: 10%;
+  width: 250px;
+  height: 400px;
+  background-image: url('./images/back_of_the_card.jpg');
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+}
