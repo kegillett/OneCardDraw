@@ -4,11 +4,12 @@ export default class ObliqueComponent extends Component {
 	constructor() {
 		super();
 		this.state = {
-			file: undefined,
+			age: undefined,
+			bio: undefined,
 			firstName: undefined,
 			lastName: undefined,
-			sex: undefined,
-			age: undefined,
+			location: undefined,
+			photoURL: undefined,
 			isLoading: false
 		}
 	}
@@ -16,7 +17,6 @@ export default class ObliqueComponent extends Component {
 		this
 			.callApi()
 			.then( res => {
-				console.log( res )
 				this.setState( {
 					...res,
 					isLoading: false
@@ -33,11 +33,11 @@ export default class ObliqueComponent extends Component {
 		return body;
 	};
 	render() {
-		console.log( this.state.file )
+		console.log( this.state )
 		if ( this.state.advice !== null ) {
-			return ( <div className="cards cards_flipped">
+			return ( <div className="cards cards_flipped" onClick={this.props.onClick}>
 				<Grid container={true} direction="column" justify="center" alignItems="center">
-					{/* <img src={this.state.file.name} alt="#"/> */}
+					<img className='profileImg' src={this.state.photoURL} alt="#"/>
 					<h1 className="result">{this.state.firstName}</h1>
 				</Grid>
 			</div> )

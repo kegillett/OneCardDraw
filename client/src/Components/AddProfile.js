@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
+import '../App.css'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-// import { Link } from 'react-router-dom';
-// const axios = require( 'axios' );
+
 export default class AddProfile extends Component {
 	constructor() {
 		super();
@@ -20,18 +19,19 @@ export default class AddProfile extends Component {
 	}
 
 	handleChange = ( e ) => {
-		if ( e.target.id !== 'file' ) {
+		if ( e.target.id !== 'photoURL' ) {
 			this.setState( {
 				[ `${ e.target.id }` ]: e.target.value
 			} );
-		} else if ( e.target.id === 'file' ) {
-			this.setState( { file: e
+		} else if ( e.target.id === 'photoURL' ) {
+			this.setState( { photoURL: e
 					.target
 					.files[ 0 ] } )
 		}
 	}
+
 	clickHandler = () => {
-		console.log( this.state.file.name )
+		console.log( this.state.photoURL.name )
 		const formData = new FormData();
 		Object
 			.keys( this.state )
@@ -54,13 +54,13 @@ export default class AddProfile extends Component {
 		return ( <div className="mainContent form">
 			<form noValidate="noValidate" autoComplete="off">
 				<Grid container={true} direction="column" justify="center" alignItems="center">
-					<TextField id="firstName" label="First Name" onChange={this.handleChange} margin="normal" variant="outlined"/>
-					<TextField id="lastName" label="Last Name" onChange={this.handleChange} margin="normal" variant="outlined"/>
-					<input type="file" id='file' onChange={this.handleChange}/>
-					<TextField id="age" label="Age" onChange={this.handleChange} type="number" margin="normal" variant="outlined"/>
-					<TextField id="sex" label="Sex" onChange={this.handleChange} margin="normal" variant="outlined"/>
-					<TextField id="location" label="Location" onChange={this.handleChange} margin="normal" variant="outlined"/>
-					<TextField rowsMax="4" id="bio" label="Biography" multiline={true} onChange={this.handleChange} margin="normal" helperText="Put some info about yourself" variant="outlined"/>
+					<TextField className="profile_info" id="firstName" label="First Name" onChange={this.handleChange} margin="normal" variant="outlined" required={true}/>
+					<TextField className="profile_info" id="lastName" label="Last Name" onChange={this.handleChange} margin="normal" variant="outlined" required={true}/>
+					<input className="profile_info" type="file" id='photoURL' onChange={this.handleChange} required={true}/>
+					<TextField className="profile_info" id="age" label="Age" onChange={this.handleChange} type="number" margin="normal" variant="outlined" required={true}/>
+					<TextField className="profile_info" id="sex" label="Sex" onChange={this.handleChange} margin="normal" variant="outlined" required={true}/>
+					<TextField className="profile_info" id="location" label="Location" onChange={this.handleChange} margin="normal" variant="outlined" required={true}/>
+					<TextField className="profile_info" rowsMax="4" id="bio" label="Biography" multiline={true} onChange={this.handleChange} margin="normal" variant="outlined" required={true}/>
 					<Button onClick={this.clickHandler}>Submit</Button>
 				</Grid>
 			</form>
