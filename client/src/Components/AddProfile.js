@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import '../App.css';
 import Grid from '@material-ui/core/Grid';
 // import { Link } from 'react-router-dom';
 // const axios = require( 'axios' );
@@ -9,13 +9,13 @@ export default class AddProfile extends Component {
 	constructor() {
 		super();
 		this.state = {
-			file: undefined,
+			photoURL: undefined,
 			firstName: undefined,
 			lastName: undefined,
 			age: undefined,
 			sex: undefined,
 			location: undefined,
-			bio: undefined
+			bio: undefined,
 		}
 	}
 
@@ -31,15 +31,24 @@ export default class AddProfile extends Component {
 		}
 	}
 	clickHandler = () => {
-		console.log( this.state )
-		// fetch( '/api/profile', {
-		// 	method: 'POST',
-		// 	body: JSON.stringify( this.state ),
-		// } )
-		// 	.then( ( res ) => res.json() )
-		// 	.then( ( body ) => {
-		// 		console.log( body );
-		// 	} );
+		console.log( this.state.file.name )
+		const formData = new FormData();
+		Object
+			.keys( this.state )
+			.forEach( key => {
+				if ( key !== 'photoURL' ) 
+					formData.append( key, this.state[ key ] )
+				else {
+					formData.append( key, this.state[key], this.state[ key ][ 'name' ] )
+				}
+			} );
+
+		fetch( '/api/profile', {
+			method: 'POST',
+			body: formData,
+		} ).then( ( res ) => {
+			res.json();
+		} )
 	}
 	render() {
 		return ( <div className="mainContent form">

@@ -28,6 +28,13 @@ body {
   border-radius: 20px;
   text-align: center;
   vertical-align: middle;
+  animation-name: flip;
+  animation-duration: 2s;
+  animation-iteration-count: 3;
+}
+
+.cards:Clicked {
+  transform: rotateY(180deg);
 }
 
 .cards_initial {
@@ -36,6 +43,7 @@ body {
   background-size: cover;
   border-radius: 20px;
 }
+
 
 .cards_flipped {
   background-color: white;

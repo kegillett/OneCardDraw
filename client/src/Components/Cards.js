@@ -17,7 +17,7 @@ export default class Cards extends Component {
 			isObliqueClicked: false,
 			isStrategiesClicked: false,
 			isFOASClicked: false,
-			isAdviceClicked: false
+			isAdviceClicked: false,
 		}
 	}
 	setClickedState = ( e ) => {

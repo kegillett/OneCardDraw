@@ -58,8 +58,10 @@ module.exports = function ( router ) {
 									tempProfile[ key ] = profile[ key ]
 									//ups counter by one for every loop until it equals keyLength then resolves the promise allowing the function to continue.
 									counter++
-									if ( counter === keyLength ) 
+									if ( counter === keyLength ) {
+										console.log( tempProfile )
 										resolve()
+									}
 								} )
 						}
 					} ).then( () => res.json( tempProfile ) );
@@ -70,9 +72,9 @@ module.exports = function ( router ) {
 		.route( '/profile' )
 		//create new profile.
 		.post( upload.single( 'photoURL' ), ( req, res ) => {
-			console.log( req.body )
+			console.log( req )
 			const profile = new Profile();
-			profile.photoURL = req.body.file.path;
+			profile.photoURL = req.file.path;
 			profile.firstName = req.body.firstName;
 			profile.lastName = req.body.lastName;
 			profile.age = req.body.age;
