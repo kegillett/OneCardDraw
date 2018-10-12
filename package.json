@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": " ./node_modules/nodemon/bin/nodemon.js ./server/index.js",
+		"dev": " ./node_modules/nodemon/bin/nodemon.js server/",
 		"start": "concurrently --kill-others \"cd client/ && npm run start\" \"npm run dev\""
 	},
 	"author": "",
@@ -13,8 +13,10 @@
 	"dependencies": {
 		"axios": "^0.18.0",
 		"body-parser": "^1.18.3",
+		"cors": "^2.8.4",
 		"express": "^4.16.3",
 		"mongoose": "^5.3.2",
+		"morgan": "^1.9.1",
 		"multer": "^1.4.0",
 		"path": "^0.12.7"
 	},
