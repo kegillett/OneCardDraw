@@ -15,15 +15,13 @@ export default class Cards extends Component {
 			isObliqueClicked: false,
 			isStrategiesClicked: false,
 			isFOASClicked: false,
-			isAdviceClicked: false,
+			isAdviceClicked: false
 		}
 	}
 	setClickedState = ( e ) => {
-		console.log( this.state[ `is${ e.target.id }Clicked` ] )
 		this.setState( {
-			[ `is${ e.target.id }Clicked` ]: !this.state[ `is${ e.target.id }Clicked` ]
+			[ `is${ e.target.id }Clicked` ]: true
 		} );
-
 	}
 
 	render() {

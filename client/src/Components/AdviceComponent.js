@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
 export default class AdviceComponent extends Component {
 	constructor() {
 		super();
 		this.state = {
 			advice: null,
-			isLoading: false
+			isLoading: false,
 		}
 	}
 	componentDidMount() {
+		//make an API call to the http://api.adviceslip.com/advice'
 		this
 			.callApi()
 			.then( res => {
-				this.setState( { advice: res.slip.advice, isLoading: false } );
+				//assign result to the advice state
+				this.setState( { advice: res.slip.advice, isLoading: false, } );
 			} )
 			.catch( err => console.log( err ) );
 	}
@@ -26,13 +27,13 @@ export default class AdviceComponent extends Component {
 	};
 	render() {
 		if ( this.state.advice !== null ) {
-			return ( <div className="cards cards_flipped">
-				<Grid container={true} direction="column" justify="center" alignItems="center">
-					<h1 className="result">{this.state.advice}</h1>
-				</Grid>
+			return ( <div className="cards cards_flipped outside_api">
+				<h1 className="result">{this.state.advice}</h1>
 			</div> )
 		} else {
-			return ( <div className="cards cards_flipped"></div> )
+			return ( <div className="cards cards_flipped outside_api">
+				<h1 className="result">At this point of time no advice is available for you.</h1>
+			</div> )
 		}
 	}
 }
