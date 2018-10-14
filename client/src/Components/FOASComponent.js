@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
 export default class FOASComponent extends Component {
 	constructor() {
 		super();
@@ -31,11 +30,11 @@ export default class FOASComponent extends Component {
 	};
 	render() {
 		if ( this.state.message !== null ) {
-			return ( <div className="cards cards_flipped">
-				<Grid container={true} direction="column" justify="center" alignItems="center">
-					<h1 >{this.state.message}</h1>
-					<h3 >{this.state.subtitle}</h3>
-				</Grid>
+			return ( <div className="cards cards_flipped outside_api">
+				<div className="text">
+					<h1>{this.state.message}</h1>
+					<h3>{this.state.subtitle}</h3>
+				</div>
 			</div> )
 		} else {
 			return ( <div className="cards cards_flipped"></div> )

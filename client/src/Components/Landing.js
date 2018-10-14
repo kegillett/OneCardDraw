@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import { Button, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+//ovveride of standard MUI theme for button
 const theme = createMuiTheme( {
 	overrides: {
 		MuiButton: { // Name of the component ⚛️ / style sheet

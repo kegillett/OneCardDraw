@@ -1,3 +1,8 @@
+:root {
+  --text-color: #1A237E;
+  --box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+}
+
 body {
   background-image: url('./images/background.png');
   font-family: 'Lobster', cursive;
@@ -12,7 +17,7 @@ body {
   margin-right: auto;
   padding: 20px;
   width: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(227, 242, 253, 0.2);
   border-radius: 10%;
 }
 
@@ -28,27 +33,84 @@ body {
   border-radius: 20px;
   text-align: center;
   vertical-align: middle;
-  animation-name: flip;
-  animation-duration: 2s;
-  animation-iteration-count: 3;
-}
-
-.cards:Clicked {
-  transform: rotateY(180deg);
+  border-color: var(--text-color);
+  border-style: solid;
+  border-width: medium;
+  box-shadow: var(--box-shadow);
 }
 
 .cards_initial {
   background-image: url('./images/back_of_the_card.jpg');
   background-position: center;
   background-size: cover;
-  border-radius: 20px;
 }
 
+.cards_initial:active {
+  transform: rotateY(540deg);
+}
 
 .cards_flipped {
-  background-color: white;
+  background-image: linear-gradient(to bottom right, #1565C0, #7C4DFF);
+  background-position: center;
+  background-size: cover;
+
 }
 
-.result {
-  transform: translate(0, 40%);
+.cardName {
+  margin-top: 40px;
+  text-align: left;
+  color: var(--text-color);
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  text-transform: uppercase;
+}
+
+.profile_info {
+  background-color: rgba(227, 242, 253, 1);
+  width: 70%;
+  height: 10%;
+  font-weight: bold;
+}
+
+.upload {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.upload .profile_info {
+  margin-left: 4%;
+}
+
+.profileImg {
+  width: 100px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.oblique_result {
+  font-size: 40px;
+}
+
+.card_margin {
+  margin: 5px;
+  padding: 0;
+}
+
+.card_info {
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 170px;
+  width: 200px;
+}
+
+.outside_api {
+  display: table;
+}
+
+.outside_api .text,
+.outside_api h1 {
+  display: table-cell;
+  vertical-align: middle;
 }
